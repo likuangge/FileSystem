@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ring.central.assessment.dao.FileDao">
+
+    <!-- 创建文件 -->
+    <insert id="create" parameterType="ring.central.assessment.core.entity.FileDO">
+        INSERT INTO t_file(file_no, file_name, create_time)
+        VALUES(#{fileNo}, #{fileName}, #{createTime})
+    </insert>
+
+    <!-- 分页获取文件列表 -->
+    <select id="getListByPage" parameterType="ring.central.assessment.core.bo.FileBO" resultType="ring.central.assessment.core.entity.FileDO">
+        SELECT
+        id as id,
+        file_no as fileNo,
+        file_name as fileName,
+        create_time as createTime
+        FROM
+        t_file
+        ORDER BY create_time DESC
+        limit #{offset}, #{pageSize}
+    </select>
+
+    <!-- 获取文件数量 -->
+    <select id="getFileCount" parameterType="ring.central.assessment.core.bo.FileBO" resultType="java.lang.Long">
+        SELECT
+        count(*)
+        FROM
+        t_file
+    </select>
+
+    <!-- 通过文件编号获取文件信息 -->
+    <select id="getFileByNo" parameterType="java.lang.String" resultType="ring.central.assessment.core.bo.FileBO">
+        SELECT
+        file_name as fileName
+        FROM
+        t_file
+        WHERE
+        file_no = #{fileNo}
+    </select>
+</mapper>

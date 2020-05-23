@@ -1,4 +1,4 @@
-package ring.central.assessment.common.result;
+package ring.central.common.result;
 
 /**
  * @Description: 客户端的HTTP调用的应答结果类
