@@ -7,6 +7,17 @@ spring:
     password: 123456
     url: jdbc:mysql://localhost:3306/workinwow?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 300
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapping/*Mapper.xml

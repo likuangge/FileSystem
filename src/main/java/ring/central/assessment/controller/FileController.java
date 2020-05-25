@@ -1,11 +1,13 @@
 package ring.central.assessment.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import ring.central.assessment.core.bo.FileBO;
@@ -55,6 +57,9 @@ public class FileController {
         try {
             fileService.create(fileAO);
             return ResultInfo.success("新建文件成功");
+        } catch (IOException e) {
+            log.error("错误信息:", e);
+            return ResultInfo.errorMessage("写入文件失败");
         } catch (Exception e) {
             log.error("错误信息:", e);
             return ResultInfo.errorMessage("系统内部错误");
@@ -87,7 +92,7 @@ public class FileController {
         log.info("下载文件，文件编号:{}", fileNo);
         try {
             File file = fileService.getDownloadFile(fileNo);
-            if(file.exists()) {
+            if (file.exists()) {
                 // 配置文件下载
                 httpServletResponse.setHeader("content-type", "application/octet-stream");
                 httpServletResponse.setContentType("application/octet-stream");
@@ -128,6 +133,30 @@ public class FileController {
             }
         } catch (Exception e) {
             log.error("错误信息:", e);
+        }
+    }
+
+    /**
+     * 获取文件详情
+     *
+     * @param fileNo 文件编号
+     * @return 文件详情
+     */
+    @RequestMapping(value = "getFile", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultInfo getFile(@RequestParam String fileNo) {
+        if(StringUtils.isEmpty(fileNo)) {
+            return ResultInfo.errorMessage("无文件编号，无法获取文件");
+        }
+        log.error("获取文件详情，入参:{}", fileNo);
+        try {
+            return ResultInfo.success(fileService.getFile(fileNo));
+        } catch (IOException e) {
+            log.error("错误信息:", e);
+            return ResultInfo.errorMessage("读取文件失败");
+        } catch (Exception e) {
+            log.error("错误信息:", e);
+            return ResultInfo.errorMessage("系统内部错误");
         }
     }
 

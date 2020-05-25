@@ -19,4 +19,9 @@ public class FileBO extends PageBO {
      * 文件名称
      */
     private String fileName;
+
+    /**
+     * 文件编号
+     */
+    private String fileNo;
 }

@@ -26,9 +26,19 @@ public class FileVO {
     private String fileName;
 
     /**
+     * 文件内容
+     */
+    private String fileContent;
+
+    /**
      * 创建时间
      */
     private Date createTime;
+
+    /**
+     * 是否可读：0，不可读；1，可读
+     */
+    private Integer readLock;
 
     /**
      * 获取创建时间字符串

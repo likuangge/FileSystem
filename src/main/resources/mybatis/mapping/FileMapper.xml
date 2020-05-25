@@ -33,6 +33,7 @@
     <!-- 通过文件编号获取文件信息 -->
     <select id="getFileByNo" parameterType="java.lang.String" resultType="ring.central.assessment.core.bo.FileBO">
         SELECT
+        file_no as fileNo,
         file_name as fileName
         FROM
         t_file

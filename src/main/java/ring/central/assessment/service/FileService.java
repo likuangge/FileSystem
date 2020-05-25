@@ -19,7 +19,7 @@ public interface FileService {
      * 创建文件
      *
      * @param fileAO 文件信息
-     * @throws IOException io异常
+     * @throws IOException IO异常
      */
     void create(FileAO fileAO) throws IOException;
 
@@ -38,4 +38,13 @@ public interface FileService {
      * @return 下载文件内容
      */
     File getDownloadFile(String fileNo);
+
+    /**
+     * 通过文件编号获取文件详情
+     *
+     * @param fileNo 文件编号
+     * @throws IOException IO异常
+     * @return 文件详情
+     */
+    FileVO getFile(String fileNo) throws IOException;
 }
