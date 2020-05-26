@@ -1,0 +1,5 @@
+文件系统 后台项目
+运行项目 请提前准备mysql与redis环境
+请在application.yml中配置好mysql和redis配置信息
+请在mysql中运行resource->sql目录下的脚本
+项目运行端口为8081，保证端口没有被占用

@@ -36,11 +36,6 @@ public class FileVO {
     private Date createTime;
 
     /**
-     * 是否可读：0，不可读；1，可读
-     */
-    private Integer readLock;
-
-    /**
      * 获取创建时间字符串
      *
      * @return 创建时间字符串

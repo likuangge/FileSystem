@@ -1,6 +1,5 @@
 package ring.central.assessment.core.ao;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -25,4 +24,14 @@ public class FileAO extends PageAO {
      * 文件内容
      */
     private String fileContent;
+
+    /**
+     * 文件编号
+     */
+    private String fileNo;
+
+    /**
+     * 读取文件线程id
+     */
+    private Integer threadId;
 }

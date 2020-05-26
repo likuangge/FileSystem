@@ -1,8 +1,12 @@
-package ring.central.assessment;
+package ring.central;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * SpringBoot启动类
+ * @author zuo.li@luckincoffee.com
+ */
 @SpringBootApplication
 public class AssessmentApplication {
 
